@@ -15,6 +15,7 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
           <link rel="icon" href="" />
+          <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet"/> 
         </Head>
         <body>
           <Main />
