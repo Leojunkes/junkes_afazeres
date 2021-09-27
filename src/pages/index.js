@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 import {
   Flex,
   Input,
@@ -8,8 +9,8 @@ import {
   Th,
   Tbody,
   Td,
-  Checkbox,
-  CheckboxGroup,
+  InputLeftAddon,
+  InputGroup,
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { FiTrash2 } from 'react-icons/fi';
@@ -121,29 +122,33 @@ export default function Home() {
           </Button>
         </Flex>
         <Flex>
-          <Input
-            placeholder={{ Data: 'data' }}
-            value={newDate}
-            type="date"
-            h="50px"
-            mt="2"
-            onChange={(e) => setNewDate(e.target.value)}
-            borderRadius="8"
-            border="none"
-            bg="colors.50"
-            w="100%"
-          />
-
-          <Button
+          <InputGroup>
+          <InputLeftAddon mt='2' children='Data'/>
+            <Input
+              placeholder={{ Data: 'data' }}
+              _placeholder="false"
+              value={newDate}
+              type="date"
+              mt="2"
+              onChange={(e) => setNewDate(e.target.value)}
+              borderRadius="8"
+              border="none"
+              bg="colors.50"
+              w="100%"
+            />
+            <Button
             borderRadius="50px"
             colorScheme="#e5e5e5"
             size="md"
             border="none"
             ml="2"
-            mt="4"
+            mt="2"
           >
             <MdDateRange fontSize="1.5rem" color="green" />
           </Button>
+          </InputGroup>
+
+          
         </Flex>
 
         <Button
@@ -167,6 +172,7 @@ export default function Home() {
           type="button"
           onClick={Delete}
           p="8px"
+          mt="2"
         >
           Apagar Tudo
         </Button>

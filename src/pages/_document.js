@@ -14,7 +14,7 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap"
             rel="stylesheet"
           />
-          <link rel="icon" href="" />
+          <link rel="icon" href="/imagens/listaJ.png" />
           <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet"/> 
         </Head>
         <body>
