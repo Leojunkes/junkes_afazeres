@@ -57,13 +57,13 @@ export default function Home() {
   }
   function salvar() {
     localStorage.setItem('users', JSON.stringify(users));
-    alert('Tarefas salvar com sucesso!');
+    window.location.reload();
   }
   function removeTasks(id) {
-    const key = localStorage.key(id);
-    if (localStorage.getItem(key) === id) {
-      localStorage.removeItem(id);
-    }
+    // const key = localStorage.key(id);
+    // if (localStorage.getItem(key) === id) {
+    //   localStorage.removeItem(id);
+    // }
 
     const deleteTasks = users.filter((task) => task.id !== id);
     setUsers(deleteTasks);
@@ -123,7 +123,7 @@ export default function Home() {
         </Flex>
         <Flex>
           <InputGroup>
-          <InputLeftAddon mt='2' children='Data'/>
+            <InputLeftAddon mt="2" children="Data" />
             <Input
               placeholder={{ Data: 'data' }}
               _placeholder="false"
@@ -137,18 +137,16 @@ export default function Home() {
               w="100%"
             />
             <Button
-            borderRadius="50px"
-            colorScheme="#e5e5e5"
-            size="md"
-            border="none"
-            ml="2"
-            mt="2"
-          >
-            <MdDateRange fontSize="1.5rem" color="green" />
-          </Button>
+              borderRadius="50px"
+              colorScheme="#e5e5e5"
+              size="md"
+              border="none"
+              ml="2"
+              mt="2"
+            >
+              <MdDateRange fontSize="1.5rem" color="green" />
+            </Button>
           </InputGroup>
-
-          
         </Flex>
 
         <Button
