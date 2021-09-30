@@ -16,6 +16,7 @@ import { useEffect, useState } from 'react';
 import { FiTrash2 } from 'react-icons/fi';
 import { GoPlus } from 'react-icons/go';
 import { MdDateRange } from 'react-icons/md';
+import {v4 as uuid} from 'uuid';
 
 export default function Home() {
   const [users, setUsers] = useState([]);
@@ -35,7 +36,7 @@ export default function Home() {
     e.preventDefault();
 
     const newTask = {
-      id: Math.random().toFixed(1),
+      id:Math.random(),
       name: newName,
       date: newDate,
       isComplete: false,
@@ -43,6 +44,7 @@ export default function Home() {
     if (!newName) {
       return;
     }
+    
     alert('Tarefa criada, não esqueça de clicar em Salvar Tudo!');
     setUsers((oldState) => [...oldState, newTask]);
     setNewName('');
