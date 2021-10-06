@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-children-prop */
 import {
   Flex,
@@ -16,12 +17,18 @@ import { useEffect, useState } from 'react';
 import { FiTrash2 } from 'react-icons/fi';
 import { GoPlus } from 'react-icons/go';
 import { MdDateRange } from 'react-icons/md';
-import {v4 as uuid} from 'uuid';
 
 export default function Home() {
   const [users, setUsers] = useState([]);
   const [newName, setNewName] = useState('');
   const [newDate, setNewDate] = useState('');
+  
+
+  const bgColor = (
+    <Flex>
+      <label style={{ color: 'gray' }}>Realizado</label>
+    </Flex>
+  );
 
   useEffect(() => {
     const localStorageTasks = JSON.parse(localStorage.getItem('users'));
@@ -36,7 +43,7 @@ export default function Home() {
     e.preventDefault();
 
     const newTask = {
-      id:Math.random(),
+      id: Math.random(),
       name: newName,
       date: newDate,
       isComplete: false,
@@ -44,7 +51,7 @@ export default function Home() {
     if (!newName) {
       return;
     }
-    
+
     alert('Tarefa criada, não esqueça de clicar em Salvar Tudo!');
     setUsers((oldState) => [...oldState, newTask]);
     setNewName('');
@@ -78,7 +85,7 @@ export default function Home() {
     const localStorageTasks = JSON.parse(localStorage.getItem('users'));
     const tasks =
       localStorage.getItem('users') !== null ? localStorageTasks : [];
-    console.log(tasks);
+    
 
     setUsers([...tasks]);
     // setUsers((users) => [...users, tasks])!==null?tasks:[];
@@ -180,7 +187,7 @@ export default function Home() {
 
       <Flex
         mt="20"
-        w="90%"
+        w="100%"
         boxShadow="-0.381739px 10.9934px 27px rgba(0, 0, 0, 0.10), -0.277656px 7.99596px 18.1986px rgba(0, 0, 0, 0.202344), -0.193256px 5.5654px 11.7703px rgba(0, 0, 0, 0.16875), -0.126749px 3.65014px 7.30371px rgba(0, 0, 0, 0.144531), -0.0763479px 2.19867px 4.3875px rgba(0, 0, 0, 0.125), -0.0402616px 1.15946px 2.61035px rgba(0, 0, 0, 0.105469), -0.0167011px 0.48096px 1.56094px rgba(0, 0, 0, 0.08125), -0.00387704px 0.111651px 0.82793px rgba(0, 0, 0, 0.0476562);"
       >
         <Table>
@@ -213,8 +220,9 @@ export default function Home() {
                 fontSize="1.8rem"
                 fontFamily="Courgette, cursive"
               >
+                
                 <Td lineHeight="8" border="1px">
-                  {u.name}
+                  {u.isComplete === false ? u.name : bgColor}
                 </Td>
                 <Td border="1px" fontSize="1.5rem">
                   {u.date}
@@ -223,6 +231,15 @@ export default function Home() {
                   <Button onClick={() => removeTasks(u.id)}>
                     <FiTrash2 color="#e53e3e" />
                   </Button>
+                </Td>
+                <Td border='1px'>
+                  <input
+                    type="checkbox"
+                    readOnly
+                    checked={u.isComplete}
+                    onClick={() => handleTaskCompletion(u.id)}
+                    
+                  />
                 </Td>
               </Tr>
             </Tbody>
