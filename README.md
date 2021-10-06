@@ -4,7 +4,7 @@
 
 <img src='./public/imagens/listaMont.png' width='500' >
 <img src='./public/imagens/afazeresPc.png' width='500' >
-<img src='./public/imagens/afazeresCell.png' width='500' >
+<img src='./public/imagens/afazeresCell.png' width='200' >
 
 ## Sobre
 
